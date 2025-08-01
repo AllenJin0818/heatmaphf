@@ -3,22 +3,26 @@ channels:
   - conda-forge
 dependencies:
   - python=3.10
-  - ipykernel
   - ipywidgets=7.7.2
-  - widgetsnbextension=3.6.1
+  - ipykernel
+  - widgetsnbextension=3.6.0
   - pandas
   - numpy
   - requests
   - scipy
   - matplotlib
-  - ipyleaflet
+  - ipyleaflet=0.17.4  # Pin to stable version
+  - pip
   - bokeh
   - bqplot
   - ipympl=0.9.2
+  - jupyterlab-fasta
   - vega_datasets
+  - ipyvolume
   - nodejs
-  - pip
+  - jupyterlab=3.6.6
+  - jupyter_contrib_nbextensions
   - pip:
       - voila==0.5.0
       - voila-topbar==0.1.1
-
+      - jupyter-leaflet>=0.17.4  # Add this explicitly
