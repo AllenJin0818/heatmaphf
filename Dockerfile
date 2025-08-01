@@ -16,9 +16,10 @@ COPY --chown=user . .
 RUN mamba env create --prefix $HOME/env -f ./environment.yml
 
 # ✅ Add this block to install/enable JS widget extensions
-RUN mamba run -p $HOME/env pip install jupyterlab_widgets widgetsnbextension && \
-    mamba run -p $HOME/env jupyter nbextension install --py widgetsnbextension --sys-prefix && \
-    mamba run -p $HOME/env jupyter nbextension enable --py widgetsnbextension --sys-prefix
+RUN mamba run -p $HOME/env pip install \
+    ipywidgets \
+    jupyterlab_widgets \
+    widgetsnbextension
 
 EXPOSE 7860
 WORKDIR $HOME/app
