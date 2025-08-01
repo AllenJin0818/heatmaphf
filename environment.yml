@@ -19,6 +19,7 @@ dependencies:
   - vega_datasets
   - ipyvolume
   - nodejs
+  - jupyterlab_widgets  
 
   - pip:
       - voila==0.5.0
