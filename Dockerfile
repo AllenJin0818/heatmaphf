@@ -12,9 +12,16 @@ ENV HOME=/home/user \
 WORKDIR $HOME/app
 COPY --chown=user . .
 
-RUN mamba env create --prefix $HOME/env  -f ./environment.yml
+# Create the environment
+RUN mamba env create --prefix $HOME/env -f ./environment.yml
+
+# ✅ Add this block to install/enable JS widget extensions
+RUN mamba run -p $HOME/env pip install jupyterlab_widgets widgetsnbextension && \
+    mamba run -p $HOME/env jupyter nbextension install --py widgetsnbextension --sys-prefix && \
+    mamba run -p $HOME/env jupyter nbextension enable --py widgetsnbextension --sys-prefix
 
 EXPOSE 7860
 WORKDIR $HOME/app
 
+# Start Voilà from the notebooks/ directory
 CMD mamba run -p $HOME/env --no-capture-output voila --no-browser notebooks/
